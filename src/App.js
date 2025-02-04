@@ -147,15 +147,31 @@ const App = () => {
             </div>
           </div>
           <div className="music-player-buttons">
-            <FaFastBackward size={28} onClick={getPrevSong} />
-            <FaBackward size={28} />
+            <FaFastBackward
+              className="music-player-button"
+              size={28}
+              onClick={getPrevSong}
+            />
+            <FaBackward className="music-player-button" size={28} />
             {playing ? (
-              <FaPause size={28} onClick={() => setPlaying(false)} />
+              <FaPause
+                className="music-player-button"
+                size={28}
+                onClick={() => setPlaying(false)}
+              />
             ) : (
-              <FaPlay size={28} onClick={() => setPlaying(true)} />
+              <FaPlay
+                className="music-player-button"
+                size={28}
+                onClick={() => setPlaying(true)}
+              />
             )}
-            <FaForward size={28} />
-            <FaFastForward size={28} onClick={getNextSong} />
+            <FaForward className="music-player-button" size={28} />
+            <FaFastForward
+              className="music-player-button"
+              size={28}
+              onClick={getNextSong}
+            />
           </div>
           <div className="music-line">
             <div className="line">

@@ -103,6 +103,7 @@ h2 {
 }
 
 .dark-mode-toggle {
+  cursor: pointer;
   position: absolute;
   right: 6px;
   top: 6px;
@@ -123,6 +124,7 @@ h2 {
       display: flex;
       justify-content: space-between;
       .social-media-link {
+        cursor: pointer;
         margin-right: 7px;
       }
     }
@@ -179,8 +181,12 @@ h2 {
       display: flex;
       justify-content: space-around;
       padding-top: 7px;
+      .music-player-button {
+        cursor: pointer;
+      }
     }
     .music-line {
+      cursor: pointer;
       margin-top: 14px;
       .line {
         height: 7px;
@@ -202,5 +208,8 @@ h2 {
   .song-list {
     max-height: calc(100vh - 515px);
     overflow-y: scroll;
+    .song-tab {
+      cursor: pointer;
+    }
   }
 }
