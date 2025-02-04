@@ -18,6 +18,9 @@ import {
 import unchainImage from "./media/unchainMyHeart.webp";
 import valentineImage from "./media/myFunnyValentine.webp";
 import handleImage from "./media/hardToHandle.webp";
+import mustangImage from "./media/mustangSally.jpg";
+import kissImage from "./media/kiss.jpg";
+import ladyImage from "./media/ladyIsATramp.jpg";
 
 import "./style.scss";
 
@@ -46,8 +49,19 @@ const App = () => {
       artist: "Otis Redding",
       image: handleImage,
     },
-    { i: 3, title: "Mustang Sally", artist: "Wilson Pickett" },
-    { i: 4, title: "Kiss", artist: "Prince" },
+    {
+      i: 3,
+      title: "Mustang Sally",
+      artist: "Wilson Pickett",
+      image: mustangImage,
+    },
+    { i: 4, title: "Kiss", artist: "Prince", image: kissImage },
+    {
+      i: 5,
+      title: "The Lady is a Tramp",
+      artist: "Frank Sinatra",
+      image: ladyImage,
+    },
   ];
 
   const getPrevSong = () => {
@@ -77,32 +91,32 @@ const App = () => {
           <div className="social-media-links">
             <a
               className="social-media-link"
-              href="https://instagram.com/yourprofile"
+              href="https://instagram.com/ridleycolluphid/"
               target="_blank"
-              rel="noopener noreferrer"
             >
               <FaInstagram size={42} />
             </a>
             <a
               className="social-media-link"
-              href="https://tiktok.com/@yourprofile"
+              href="https://tiktok.com/@ridley_colluphid"
               target="_blank"
-              rel="noopener noreferrer"
             >
               <FaTiktok size={42} />
             </a>
             <a
               className="social-media-link"
-              href="https://facebook.com/yourprofile"
+              href="https://www.facebook.com/profile.php?id=61572421277979&sk=about"
               target="_blank"
-              rel="noopener noreferrer"
             >
               <FaFacebook size={42} />
             </a>
-            <a className="social-media-link" rel="noopener noreferrer">
+            <a className="social-media-link" href="tel:07742148280">
               <FaPhone size={42} />
             </a>
-            <a className="social-media-link" rel="noopener noreferrer">
+            <a
+              className="social-media-link"
+              href="mailto:dougiehawes@hotmail.com"
+            >
               <FaEnvelope size={42} />
             </a>
           </div>
