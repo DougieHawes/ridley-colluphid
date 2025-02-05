@@ -15,21 +15,7 @@ import {
   FaMoon,
 } from "react-icons/fa";
 
-import unchainImage from "./media/unchainMyHeart.webp";
-import valentineImage from "./media/myFunnyValentine.webp";
-import handleImage from "./media/hardToHandle.webp";
-import minnieImage from "./media/minnieTheMoocher.webp";
-import mustangImage from "./media/mustangSally.jpg";
-import kissImage from "./media/kiss.jpg";
-import ladyImage from "./media/ladyIsATramp.jpg";
-
-import unchainMyHeart from "./media/unchainMyHeart.mp3";
-import myFunnyValentine from "./media/myFunnyValentine.mp3";
-import hardToHandle from "./media/hardToHandle.mp3";
-import minnieTheMoocher from "./media/minnieTheMoocher.mp3";
-import mustangSally from "./media/mustangSally.mp3";
-import kiss from "./media/kiss.mp3";
-import ladyIsATramp from "./media/ladyIsATramp.mp3";
+import songArray from "./songs";
 
 import "./style.scss";
 
@@ -75,6 +61,23 @@ const App = () => {
   }, [songIndex]);
 
   useEffect(() => {
+    const handleSongEnd = () => {
+      getNextSong();
+    };
+
+    const audio = audioRef.current;
+    if (audio) {
+      audio.addEventListener("ended", handleSongEnd);
+    }
+
+    return () => {
+      if (audio) {
+        audio.removeEventListener("ended", handleSongEnd);
+      }
+    };
+  }, [songIndex]);
+
+  useEffect(() => {
     const updateTime = () => {
       if (audioRef.current) {
         const currentTimeInSec = audioRef.current.currentTime;
@@ -102,52 +105,6 @@ const App = () => {
     const seconds = totalSeconds % 60;
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
-
-  const songArray = [
-    {
-      i: 0,
-      title: "Unchain My Heart",
-      artist: "Ray Charles",
-      image: unchainImage,
-      mp3: unchainMyHeart,
-    },
-    {
-      i: 1,
-      title: "My Funny Valentine",
-      artist: "Chet Baker",
-      image: valentineImage,
-      mp3: myFunnyValentine,
-    },
-    {
-      i: 2,
-      title: "Hard to Handle",
-      artist: "Otis Redding",
-      image: handleImage,
-      mp3: hardToHandle,
-    },
-    {
-      i: 3,
-      title: "Minnie the Moocher",
-      artist: "Cab Calloway",
-      image: minnieImage,
-      mp3: minnieTheMoocher,
-    },
-    {
-      i: 4,
-      title: "Mustang Sally",
-      artist: "Wilson Pickett",
-      image: mustangImage,
-      mp3: mustangSally,
-    },
-    { i: 5, title: "Kiss", artist: "Prince", image: kissImage, mp3: kiss },
-    {
-      i: 6,
-      title: "The Lady is a Tramp",
-      artist: "Frank Sinatra",
-      image: ladyImage,
-      mp3: ladyIsATramp,
-    },
-  ];
 
   const getPrevSong = () => {
     const wasPlaying = playing;
@@ -195,10 +152,6 @@ const App = () => {
   };
 
   const getNextSong = () => {
-    const wasPlaying = playing;
-
-    setPlaying(false);
-
     setSongIndex((prevIndex) =>
       prevIndex === songArray.length - 1 ? 0 : prevIndex + 1
     );
@@ -207,9 +160,13 @@ const App = () => {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
       audioRef.current.load();
-      if (wasPlaying) {
-        audioRef.current.play();
-        setPlaying(true);
+
+      // Ensure autoplay
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setPlaying(true))
+          .catch((error) => console.warn("Autoplay error:", error));
       }
     }
   };
