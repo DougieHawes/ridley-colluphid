@@ -209,6 +209,12 @@ h2 {
     overflow-y: scroll;
     .song-tab {
       cursor: pointer;
+      .song-name {
+        font-size: 28px;
+      }
+      .artist-name {
+        margin-top: -7px;
+      }
     }
   }
 }
