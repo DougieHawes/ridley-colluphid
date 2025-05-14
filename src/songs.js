@@ -5,6 +5,8 @@ import minnieImage from "./media/minnieTheMoocher.webp";
 import mustangImage from "./media/mustangSally.jpg";
 import kissImage from "./media/kiss.jpg";
 import ladyImage from "./media/ladyIsATramp.jpg";
+import loveImage from "./media/loveIsAFire.png";
+import dangerousImage from "./media/dangerousThings.png";
 
 import unchainMyHeart from "./media/unchainMyHeart.mp3";
 import myFunnyValentine from "./media/myFunnyValentine.mp3";
@@ -13,6 +15,8 @@ import minnieTheMoocher from "./media/minnieTheMoocher.mp3";
 import mustangSally from "./media/mustangSally.mp3";
 import kiss from "./media/kiss.mp3";
 import ladyIsATramp from "./media/ladyIsATramp.mp3";
+import loveIsAFire from "./media/loveIsAFire.mp3";
+import dangerousThings from "./media/dangerousThings.mp3";
 
 const songArray = [
   {
@@ -57,6 +61,20 @@ const songArray = [
     artist: "Frank Sinatra",
     image: ladyImage,
     mp3: ladyIsATramp,
+  },
+  {
+    i: 7,
+    title: "Love is a Fire",
+    artist: "Genya Ravan",
+    image: loveImage,
+    mp3: loveIsAFire,
+  },
+  {
+    i: 8,
+    title: "Dangerous Things",
+    artist: "Strange Fruit",
+    image: dangerousImage,
+    mp3: dangerousThings,
   },
 ];
 
